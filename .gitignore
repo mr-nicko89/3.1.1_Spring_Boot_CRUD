@@ -2,4 +2,7 @@
 /backup_MSSQL/
 
 # Project exclude paths
+/Task/
 /target/
+
+
