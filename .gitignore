@@ -1,8 +1,4 @@
 /.idea/
 /backup_MSSQL/
-
-# Project exclude paths
-/Task/
 /target/
-
-
+/Task/
