@@ -17,7 +17,6 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Controller
 @RequestMapping("/")
 public class PeopleController {
