@@ -31,7 +31,7 @@
 <div class="container-fluid">
     <div class="row sidebar">
 
-        <div class="col col-2 mt-3">
+        <div class="col col-2 mt-3 p-0">
             <div class="d-grid gap-1">
                 <a href="#" class="btn btn-primary">Admin</a> <!--Как развернуть на ширину всего блока?-->
                 <a href="#" class="btn btn-link">User</a>
@@ -69,7 +69,7 @@
                                         <th>Delete</th>
                                     </tr>
                                     </thead>
-                                    <tbody >
+                                    <tbody>
                                     <tr th:each="user : ${people}" class="border-top">
                                         <td th:text="${user.getName()}"> user</td>
                                         <td th:text="${user.getAge()}"> userAge</td>
