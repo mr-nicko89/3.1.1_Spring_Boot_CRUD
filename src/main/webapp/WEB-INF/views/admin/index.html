@@ -19,10 +19,10 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">admin@mail.ru with roles: ADMIN USER</a>
+        <span class="navbar-brand" href="#" th:text="${user.getEmail() + ' with roles: ' + user.getAuthorities()}">admin@mail123.ru with roles: ADMIN USER</span>
         <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
             <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="/logout">Logout</a>
             </li>
         </ul>
     </div>
