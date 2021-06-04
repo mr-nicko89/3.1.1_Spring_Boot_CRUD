@@ -20,7 +20,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <span class="navbar-brand" href="#" th:text="${user.getEmail() + ' with roles: ' + user.getAuthorities()}">admin@mail123.ru with roles: ADMIN USER</span>
+        <span class="navbar-brand" href="#" th:text="${userRegistered.getEmail() + ' with roles: ' + userRegistered.getAuthorities()}">admin@mail123.ru with roles: ADMIN USER</span>
         <ul class="navbar-nav mb-2 mb-lg-0 d-flex">
             <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
@@ -102,9 +102,9 @@
                                                         <td th:text="${user.getRoleSet()}"> userRoleSet</td>
                                                         <td>
 
-                                                            <!--<a th:href="@{/admin/{id}/edit(id=${user.getId()})}"-->
-                                                            <!--th:text="Edit"-->
-                                                            <!--class="btn btn-info text-white">user</a>-->
+<!--                                                            <a th:href="@{/admin/{id}/edit(id=${user.getId()})}"-->
+<!--                                                            th:text="Edit"-->
+<!--                                                            class="btn btn-info text-white">user</a>-->
 
                                                             <button type="button" class="btn btn-info"
                                                                     data-bs-toggle="modal"
@@ -127,7 +127,31 @@
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <!--Содержимое модального окна-->
-                                                                            ...
+                                                                            <form >
+                                                                                <label for="nameEditUser">Enter name: </label>
+                                                                                <input type="text"  id="nameEditUser"/>
+                                                                                <div style="color:red" >Name Error</div>
+                                                                                <br/>
+                                                                                <label for="ageEditUser">Enter age: </label>
+                                                                                <input type="text"  id="ageEditUser"/>
+                                                                                <div style="color:red" >Age Error</div>
+                                                                                <br/>
+                                                                                <label for="emailEditUser">Enter email: </label>
+                                                                                <input type="text"  id="emailEditUser"/>
+                                                                                <div style="color:red" >Email Error</div>
+                                                                                <br/>
+                                                                                <label for="passwordEditUser">Enter password: </label>
+                                                                                <input type="text" id="passwordEditUser"/>
+                                                                                <div style="color:red" >Password Error</div>
+                                                                                <br/>
+                                                                                <label for="selectedRoleEditUser">Select role: </label>
+                                                                                <select multiple id="selectedRoleEditUser" name="selectedRoleEditUser">
+                                                                                    <option >role
+                                                                                    </option>
+                                                                                </select>
+                                                                                <br/>
+                                                                                <input type="submit" value="Update!"/>
+                                                                            </form>
                                                                             <!--Содержимое модального окна-->
                                                                         </div>
                                                                         <div class="modal-footer">
@@ -251,11 +275,11 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr class="border-top">
-                                                    <td th:text="${user.getName()}"> user</td>
-                                                    <td th:text="${user.getAge()}"> userAge</td>
-                                                    <td th:text="${user.getEmail()}"> userEmail</td>
-                                                    <td th:text="${user.getPassword()}"> userPassword</td>
-                                                    <td th:text="${user.getRoleSet()}"> userRoleSet</td>
+                                                    <td th:text="${userRegistered.getName()}"> user</td>
+                                                    <td th:text="${userRegistered.getAge()}"> userAge</td>
+                                                    <td th:text="${userRegistered.getEmail()}"> userEmail</td>
+                                                    <td th:text="${userRegistered.getPassword()}"> userPassword</td>
+                                                    <td th:text="${userRegistered.getRoleSet()}"> userRoleSet</td>
                                                 </tr>
                                                 </tbody>
                                             </table>

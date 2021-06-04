@@ -56,8 +56,8 @@ public class PeopleController {
     //Из 2.3.1
     @GetMapping("/admin")
     public String index(@ModelAttribute("userNew") User userNew, Principal principal, Model model) {
-        User user = userService.loadUserByUsername(principal);
-        model.addAttribute("user", user);
+        User userRegistered = userService.loadUserByUsername(principal);
+        model.addAttribute("userRegistered", userRegistered);
         model.addAttribute("people", userService.getAllUsers());
         model.addAttribute("roles", roleService.getAllRoles());
         return "admin/index";
