@@ -20,7 +20,8 @@ admin/index page
     +3.2 Кнопка Delete алого цвета
     3.3 Модальное окно Edit сделать
     +5.1 Настроить динамику вкладок Users table и New User внутри Admin panel page
-    5.2 Внедрить функционал New User
+    +5.2 Внедрить функционал New User
+    +5.3 Сверстать стили New User в соответствии с ТЗ
 
 +user/index page
     +User information-page
