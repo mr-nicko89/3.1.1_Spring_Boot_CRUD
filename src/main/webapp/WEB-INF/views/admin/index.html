@@ -77,10 +77,10 @@
                                         <td th:text="${user.getPassword()}"> userPassword</td>
                                         <td th:text="${user.getRoleSet()}"> userRoleSet</td>
                                         <td><a th:href="@{/admin/{id}/edit(id=${user.getId()})}"
-                                               th:text="Edit">user</a></td>
+                                               th:text="Edit" class="btn btn-info text-white">user</a></td>
                                         <td>
                                             <form th:method="DELETE" th:action="@{/admin/{id}(id=${user.getId()})}">
-                                                <input type="submit" value="Delete"/>
+                                                <input type="submit" value="Delete" class="btn btn-danger"/>
                                             </form>
                                         </td>
                                     </tr>

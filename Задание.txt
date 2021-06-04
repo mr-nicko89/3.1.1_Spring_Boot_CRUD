@@ -16,8 +16,8 @@ index page
     Admin panel page
     +1. Настроить стили стр Users table
     3. Users table
-    3.1 Кнопка edit бирюзового цвета
-    3.2 Кнопка Delete алого цвета
+    +3.1 Кнопка edit бирюзового цвета
+    +3.2 Кнопка Delete алого цвета
     3.3 Модальное окно Edit сделать
     5. Сделать вкладку New User
 
