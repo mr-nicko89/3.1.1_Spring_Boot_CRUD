@@ -2,7 +2,7 @@
 
 +login page
 
-index page
+admin/index page
 
     Общий вид страницы
     +4. Настроить шапку
@@ -19,8 +19,10 @@ index page
     +3.1 Кнопка edit бирюзового цвета
     +3.2 Кнопка Delete алого цвета
     3.3 Модальное окно Edit сделать
-    5. Сделать вкладку New User
+    +5.1 Настроить динамику вкладок Users table и New User внутри Admin panel page
+    5.2 Внедрить функционал New User
 
++user/index page
     +User information-page
     +1. Настроить стили в соответствии с заданием
 
