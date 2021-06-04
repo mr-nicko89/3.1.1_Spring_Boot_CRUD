@@ -62,6 +62,13 @@ public class PeopleController {
         return "admin/index";
     }
 
+    @GetMapping("/user")
+    public String showUser(Principal principal, Model model) {
+        User user = userService.loadUserByUsername(principal);
+        model.addAttribute("user", user);
+        return "user/index";
+    }
+
     @GetMapping("/admin/new")
     public String newUser(@ModelAttribute("user") User user, Model model) {
         model.addAttribute("roles", roleService.getAllRoles());
