@@ -55,7 +55,9 @@ public class PeopleController {
 
     //Из 2.3.1
     @GetMapping("/admin")
-    public String index(Model model) {
+    public String index(Principal principal, Model model) {
+        User user = userService.loadUserByUsername(principal);
+        model.addAttribute("user", user);
         model.addAttribute("people", userService.getAllUsers());
         return "admin/index";
     }
@@ -130,12 +132,5 @@ public class PeopleController {
         userService.addUser(admin);
 
         return "redirect:/admin";
-    }
-
-    @GetMapping("/user/show")
-    public String showUserByIdForUser(Principal principal, Model model) {
-        User user = userService.loadUserByUsername(principal);
-        model.addAttribute("user", user);
-        return "user/showUser";
     }
 }
