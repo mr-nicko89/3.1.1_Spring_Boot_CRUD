@@ -17,6 +17,17 @@
         addEventListener('click', ({target}) => {
             if (target.closest('#submit')) {
                 document.getElementById('idEditUser').value =  target.closest('#submit').value;
+
+                // const tr = target.closest('tr');
+                // document.getElementById('ageEditUser').value = tr.getElementById('userAge');
+                // document.getElementById('emailEditUser').value = target.closest('#userEmail').innerHTML;
+                // document.getElementById('passwordEditUser').value = target.closest('#userPassword').innerHTML;
+                // document.getElementById('selectedRoleEditUser').value = target.closest('#userRoles').value;
+
+
+                document.getElementById('modalForm').action = "/admin/"+target.closest('#submit').value;
+
+
                 alert("Вы нажали на кнопку");
             }
         })
@@ -105,12 +116,12 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr th:each="user : ${people}" class="border-top">
-                                                        <td th:text="${user.getName()}"> user</td>
-                                                        <td th:text="${user.getAge()}"> userAge</td>
-                                                        <td th:text="${user.getEmail()}"> userEmail</td>
-                                                        <td th:text="${user.getPassword()}"> userPassword</td>
-                                                        <td th:text="${user.getRoleSet()}"> userRoleSet</td>
-                                                        <td th:value="${user.getId()}">
+                                                        <td th:text="${user.getName()}" id="userName"> user</td>
+                                                        <td th:text="${user.getAge()}" id="userAge"> userAge</td>
+                                                        <td th:text="${user.getEmail()}" id="userEmail"> userEmail</td>
+                                                        <td th:text="${user.getPassword()}" id="userPassword"> userPassword</td>
+                                                        <td th:text="${user.getRoleSet()}" id="userRoles"> userRoleSet</td>
+                                                        <td>
 
                                                             <button type="submit" class="btn btn-info" id="submit"
                                                                     data-bs-toggle="modal"
@@ -139,7 +150,7 @@
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"></button>
                                                                         </div>
-                                                                        <form method="PATCH" action="/admin/{id}" >
+                                                                        <form id="modalForm" method="PATCH" action="" object="user">
                                                                             <div class="col text-center">
                                                                                 <div class="modal-body">
                                                                                     <!--Содержимое модального окна-->
@@ -167,12 +178,12 @@
                                                                                                     <input type="text" id="passwordEditUser" class="form-control" />
                                                                                                     <div style="color:red">Password Error</div>
                                                                                                     <br/>
-                                                                                                    <label for="selectedRoleEditUser" class="form-label fw-bolder">Role</label>
-                                                                                                    <select multiple id="selectedRoleEditUser" name="selectedRoleEditUser" class="form-select" size="2"
-                                                                                                            aria-label="size 2 select example">
-                                                                                                        <option>role
-                                                                                                        </option>
-                                                                                                    </select>
+<!--                                                                                                    <label for="selectedRoleEditUser" class="form-label fw-bolder">Role</label>-->
+<!--                                                                                                    <select multiple id="selectedRoleEditUser" name="selectedRoleEditUser" class="form-select" size="2"-->
+<!--                                                                                                            aria-label="size 2 select example">-->
+<!--                                                                                                        <option>role-->
+<!--                                                                                                        </option>-->
+<!--                                                                                                    </select>-->
                                                                                                     <br/>
                                                                                                 </div>
                                                                                             </div>
