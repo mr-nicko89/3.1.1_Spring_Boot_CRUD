@@ -13,6 +13,16 @@
             height: 100vh;
         }
     </style>
+    <script>
+        addEventListener('click', ({target}) => {
+            if (target.closest('#submit')) {
+                document.getElementById('idEditUser').value =  target.closest('#submit').value;
+                alert("Вы нажали на кнопку");
+            }
+        })
+
+
+    </script>
 
 
     <title>Index</title>
@@ -100,17 +110,21 @@
                                                         <td th:text="${user.getEmail()}"> userEmail</td>
                                                         <td th:text="${user.getPassword()}"> userPassword</td>
                                                         <td th:text="${user.getRoleSet()}"> userRoleSet</td>
-                                                        <td>
+                                                        <td th:value="${user.getId()}">
 
-                                                            <!--                                                            <a th:href="@{/admin/{id}/edit(id=${user.getId()})}"-->
-                                                            <!--                                                            th:text="Edit"-->
-                                                            <!--                                                            class="btn btn-info text-white">user</a>-->
-
-                                                            <button type="button" class="btn btn-info"
+                                                            <button type="submit" class="btn btn-info" id="submit"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#editUserModal" th:data="${user}">
+                                                                    data-bs-target="#editUserModal" th:value="${user.getId()}">
                                                                 Edit
                                                             </button>
+<!--                                                            <a th:text="Edit" class="btn btn-info editBtn" data-bs-toggle="modal"-->
+<!--                                                               data-bs-target="#editUserModal" th:data-id="${user.getId()}">user</a>-->
+
+                                                            <!--                                                            <button type="button" class="btn btn-info"-->
+                                                            <!--                                                                    data-bs-toggle="modal"-->
+                                                            <!--                                                                    data-bs-target="#editUserModal" th:data="${user}">-->
+                                                            <!--                                                                Edit-->
+                                                            <!--                                                            </button>-->
 
                                                             <!-- Modal -->
                                                             <div class="modal fade" id="editUserModal" tabindex="-1"
@@ -125,7 +139,7 @@
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"></button>
                                                                         </div>
-                                                                        <form>
+                                                                        <form method="PATCH" action="/admin/{id}" >
                                                                             <div class="col text-center">
                                                                                 <div class="modal-body">
                                                                                     <!--Содержимое модального окна-->
@@ -135,22 +149,22 @@
                                                                                             <div class="pt-1 bg-white ">
                                                                                                 <div class="col text-center">
                                                                                                     <label for="idEditUser" class="form-label fw-bolder" readonly>ID</label>
-                                                                                                    <input type="text" id="idEditUser" class="form-control"/>
+                                                                                                    <input type="text" id="idEditUser" class="form-control" value="3" disabled/>
                                                                                                     <br/>
                                                                                                     <label for="nameEditUser" class="form-label fw-bolder">User Name</label>
-                                                                                                    <input type="text" id="nameEditUser" class="form-control"/>
+                                                                                                    <input type="text" id="nameEditUser" class="form-control" />
                                                                                                     <div style="color:red">Name Error</div>
                                                                                                     <br/>
                                                                                                     <label for="ageEditUser" class="form-label fw-bolder">Age</label>
-                                                                                                    <input type="text" id="ageEditUser" class="form-control"/>
+                                                                                                    <input type="text" id="ageEditUser" class="form-control" />
                                                                                                     <div style="color:red">Age Error</div>
                                                                                                     <br/>
                                                                                                     <label for="emailEditUser" class="form-label fw-bolder">Email</label>
-                                                                                                    <input type="text" id="emailEditUser" class="form-control"/>
+                                                                                                    <input type="text" id="emailEditUser" class="form-control" />
                                                                                                     <div style="color:red">Email Error</div>
                                                                                                     <br/>
                                                                                                     <label for="passwordEditUser" class="form-label fw-bolder">Password</label>
-                                                                                                    <input type="text" id="passwordEditUser" class="form-control"/>
+                                                                                                    <input type="text" id="passwordEditUser" class="form-control" />
                                                                                                     <div style="color:red">Password Error</div>
                                                                                                     <br/>
                                                                                                     <label for="selectedRoleEditUser" class="form-label fw-bolder">Role</label>
