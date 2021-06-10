@@ -77,10 +77,10 @@ public class PeopleController {
     }
 
     @PostMapping("/admin")
-    public String create(@ModelAttribute("user") @Valid User user, @RequestParam("selectedRole") String[] selectedRole,
-                         BindingResult bindingResult, Model model) {
+    public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @RequestParam("selectedRole") String[] selectedRole,
+                          Model model) {
         if (bindingResult.hasErrors())
-            return "admin/new";
+            return "redirect:/admin";
 
         for (String role : selectedRole
         ) {
@@ -103,7 +103,7 @@ public class PeopleController {
 
     @PatchMapping("/admin/{id}")
     public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
-                         @PathVariable("id") Long id, @RequestParam("selectedRole") String[] selectedRole) {
+                         @RequestParam("selectedRole") String[] selectedRole) {
         if (bindingResult.hasErrors())
             return "redirect:/admin";
 
@@ -114,7 +114,7 @@ public class PeopleController {
                 user.getRoleSet().add(roleService.getAdminRole());
             }
         }
-        userService.updateUser(id, user);
+        userService.updateUser(user);
         return "redirect:/admin";
     }
 

@@ -135,30 +135,23 @@
                                                                                             <div class="pt-1 bg-white ">
                                                                                                 <div class="col text-center">
                                                                                                     <label for="id" class="form-label fw-bolder" readonly>ID</label>
-                                                                                                    <!--                                                                                                    <input type="text" id="idEditUser" class="form-control"/>-->
                                                                                                     <input type="text" id="id" class="form-control" readonly th:name="id" th:value="${user.id}"/>
-                                                                                                    <!--                                                                                                    <input type="text" id="idEditUser" class="form-control" disabled th:value="${user.getId()}"/>-->
                                                                                                     <br/>
                                                                                                     <label for="name" class="form-label fw-bolder">User Name</label>
-                                                                                                    <!--                                                                                                    <input type="text" id="nameEditUser" class="form-control"  th:field="*{name}"/>-->
                                                                                                     <input type="text" id="name" class="form-control" th:name="name" th:value="${user.name}"/>
-                                                                                                    <!--                                                                                                    <input type="text" id="nameEditUser" class="form-control" th:value="${user.getName()}"/>-->
-                                                                                                    <!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>-->
+<!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="${user.name}">Name Error</div>-->
                                                                                                     <br/>
                                                                                                     <label for="age" class="form-label fw-bolder">Age</label>
-                                                                                                    <!--                                                                                                    <input type="text" id="ageEditUser" class="form-control" th:field="*{age}"/>-->
                                                                                                     <input type="text" id="age" class="form-control" th:name="age" th:value="${user.age}"/>
-                                                                                                    <!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>-->
+<!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="${user.age}">Age Error</div>-->
                                                                                                     <br/>
                                                                                                     <label for="email" class="form-label fw-bolder">Email</label>
-                                                                                                    <!--                                                                                                    <input type="text" id="emailEditUser" class="form-control" th:field="*{email}"/>-->
                                                                                                     <input type="text" id="email" class="form-control" th:name="email" th:value="${user.email}"/>
-                                                                                                    <!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>-->
+<!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="${user.email}">Email Error</div>-->
                                                                                                     <br/>
                                                                                                     <label for="password" class="form-label fw-bolder">Password</label>
-                                                                                                    <!--                                                                                                    <input type="text" id="passwordEditUser" class="form-control" th:field="*{password}"/>-->
                                                                                                     <input type="text" id="password" class="form-control" th:name="password" th:value="${user.password}"/>
-                                                                                                    <!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>-->
+<!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="${user.password}">Password Error</div>-->
                                                                                                     <br/>
                                                                                                     <label for="selectedRole" class="form-label fw-bolder">Role</label>
                                                                                                     <select multiple id="selectedRole" th:name="selectedRole" class="form-select" size="2"
@@ -218,35 +211,35 @@
                                                                 Name</label>
                                                             <input type="text" th:field="*{name}" id="nameNewUser"
                                                                    class="form-control"/>
-                                                            <div style="color:red" th:if="${#fields.hasErrors('name')}"
-                                                                 th:errors="*{name}">
-                                                                Name Error
-                                                            </div>
+<!--                                                            <div style="color:red" th:if="${#fields.hasErrors('name')}"-->
+<!--                                                                 th:errors="*{name}">-->
+<!--                                                                Name Error-->
+<!--                                                            </div>-->
                                                             <br/>
                                                             <label for="ageNewUser" class="form-label fw-bolder">Age</label>
                                                             <input type="text" th:field="*{age}" id="ageNewUser"
                                                                    class="form-control"/>
-                                                            <div style="color:red" th:if="${#fields.hasErrors('age')}"
-                                                                 th:errors="*{age}">
-                                                                Age Error
-                                                            </div>
+<!--                                                            <div style="color:red" th:if="${#fields.hasErrors('age')}"-->
+<!--                                                                 th:errors="*{age}">-->
+<!--                                                                Age Error-->
+<!--                                                            </div>-->
                                                             <br/>
                                                             <label for="emailNewUser"
                                                                    class="form-label fw-bolder">Email</label>
                                                             <input type="text" th:field="*{email}" id="emailNewUser"
                                                                    class="form-control"/>
-                                                            <div style="color:red" th:if="${#fields.hasErrors('email')}"
-                                                                 th:errors="*{email}">Email Error
-                                                            </div>
+<!--                                                            <div style="color:red" th:if="${#fields.hasErrors('email')}"-->
+<!--                                                                 th:errors="*{email}">Email Error-->
+<!--                                                            </div>-->
                                                             <br/>
                                                             <label for="passwordNewUser"
                                                                    class="form-label fw-bolder">Password</label>
                                                             <input type="text" th:field="*{password}" id="passwordNewUser"
                                                                    class="form-control"/>
-                                                            <div style="color:red"
-                                                                 th:if="${#fields.hasErrors('password')}"
-                                                                 th:errors="*{password}">Password Error
-                                                            </div>
+<!--                                                            <div style="color:red"-->
+<!--                                                                 th:if="${#fields.hasErrors('password')}"-->
+<!--                                                                 th:errors="*{password}">Password Error-->
+<!--                                                            </div>-->
                                                             <br/>
                                                             <label for="selectedRoleNewUser"
                                                                    class="form-label fw-bolder">Role</label>
