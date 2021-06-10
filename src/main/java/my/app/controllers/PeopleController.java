@@ -13,9 +13,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.Array;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/")
@@ -103,7 +105,7 @@ public class PeopleController {
 
     @PatchMapping("/admin/{id}")
     public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
-                         @PathVariable("id") Long id, @RequestParam("selectedRole") String[] selectedRole) {
+                         @RequestParam("selectedRole") String[] selectedRole) {
         if (bindingResult.hasErrors())
             return "redirect:/admin";
 
@@ -114,7 +116,7 @@ public class PeopleController {
                 user.getRoleSet().add(roleService.getAdminRole());
             }
         }
-        userService.updateUser(id, user);
+        userService.updateUser(user);
         return "redirect:/admin";
     }
 
@@ -141,4 +143,32 @@ public class PeopleController {
 
         return "redirect:/admin";
     }
+//Experiment
+@GetMapping("/admin/experiment")
+public String experiment(Model model) {
+    model.addAttribute("people", userService.getAllUsers());
+    model.addAttribute("roles", roleService.getAllRoles());
+    User[] people = (User[]) userService.getAllUsers().toArray();
+
+    for (User user:people) {
+        model.addAttribute("user"+user.getId(),user);
+    }
+    return "admin/experiment";
+}
+
+    @PostMapping("/admin/updateExp")
+    public String updateExp(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
+                            @RequestParam("selectedRole") String[] selectedRole) {
+
+//        for (String role : selectedRole) {
+//            if (role.contains("ROLE_USER")) {
+//                user.getRoleSet().add(roleService.getDefaultRole());
+//            } else if (role.contains("ROLE_ADMIN")) {
+//                user.getRoleSet().add(roleService.getAdminRole());
+//            }
+//        }
+        userService.updateUser(user);
+        return "redirect:/admin/experiment";
+    }
+
 }
