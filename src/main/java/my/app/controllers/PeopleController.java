@@ -55,7 +55,7 @@ public class PeopleController {
 
     //Из 2.3.1
     @GetMapping("/admin")
-    public String index(@ModelAttribute("userEdit") User userEdit, @ModelAttribute("userNew") User userNew, Principal principal, Model model) {
+    public String index(@ModelAttribute("userNew") User userNew, Principal principal, Model model) {
         User userRegistered = userService.loadUserByUsername(principal);
         model.addAttribute("userRegistered", userRegistered);
         model.addAttribute("people", userService.getAllUsers());
@@ -105,7 +105,7 @@ public class PeopleController {
     public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
                          @PathVariable("id") Long id, @RequestParam("selectedRole") String[] selectedRole) {
         if (bindingResult.hasErrors())
-            return "admin/edit";
+            return "redirect:/admin";
 
         for (String role : selectedRole) {
             if (role.contains("ROLE_USER")) {

@@ -125,7 +125,7 @@
                                                                                     data-bs-dismiss="modal"
                                                                                     aria-label="Close"></button>
                                                                         </div>
-                                                                        <form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${userEdit}">
+                                                                        <form th:id="${'formEditUser' + user.getId()}" th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}" th:object="${user}">
                                                                             <div class="col text-center">
                                                                                 <div class="modal-body">
                                                                                     <!--Содержимое модального окна-->
@@ -136,31 +136,33 @@
                                                                                                 <div class="col text-center">
                                                                                                     <label for="idEditUser" class="form-label fw-bolder" readonly>ID</label>
 <!--                                                                                                    <input type="text" id="idEditUser" class="form-control"/>-->
-                                                                                                    <input type="text" id="idEditUser" class="form-control" disabled th:value="${user.getId()}"/>
+                                                                                                    <input type="text" id="idEditUser" class="form-control" disabled th:form="${'formEditUser' + user.getId()}" th:value="*{id}"/>
+<!--                                                                                                    <input type="text" id="idEditUser" class="form-control" disabled th:value="${user.getId()}"/>-->
                                                                                                     <br/>
                                                                                                     <label for="nameEditUser" class="form-label fw-bolder">User Name</label>
 <!--                                                                                                    <input type="text" id="nameEditUser" class="form-control"  th:field="*{name}"/>-->
-                                                                                                    <input type="text" id="nameEditUser" class="form-control" th:value="${user.getName()}"/>
-                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="${user.getName}">Name Error</div>
+                                                                                                    <input type="text" id="nameEditUser" class="form-control" th:form="${'formEditUser' + user.getId()}" th:value="*{name}"/>
+<!--                                                                                                    <input type="text" id="nameEditUser" class="form-control" th:value="${user.getName()}"/>-->
+<!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>-->
                                                                                                     <br/>
                                                                                                     <label for="ageEditUser" class="form-label fw-bolder">Age</label>
 <!--                                                                                                    <input type="text" id="ageEditUser" class="form-control" th:field="*{age}"/>-->
-                                                                                                    <input type="text" id="ageEditUser" class="form-control" th:value="${user.getAge()}"/>
-                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>
+                                                                                                    <input type="text" id="ageEditUser" class="form-control" th:form="${'formEditUser' + user.getId()}" th:value="*{age}"/>
+<!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Age Error</div>-->
                                                                                                     <br/>
                                                                                                     <label for="emailEditUser" class="form-label fw-bolder">Email</label>
 <!--                                                                                                    <input type="text" id="emailEditUser" class="form-control" th:field="*{email}"/>-->
-                                                                                                    <input type="text" id="emailEditUser" class="form-control" th:value="${user.getEmail()}"/>
-                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
+                                                                                                    <input type="text" id="emailEditUser" class="form-control" th:form="${'formEditUser' + user.getId()}" th:value="*{email}"/>
+<!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>-->
                                                                                                     <br/>
                                                                                                     <label for="passwordEditUser" class="form-label fw-bolder">Password</label>
 <!--                                                                                                    <input type="text" id="passwordEditUser" class="form-control" th:field="*{password}"/>-->
-                                                                                                    <input type="text" id="passwordEditUser" class="form-control" th:value="${user.getPassword()}"/>
-                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+                                                                                                    <input type="text" id="passwordEditUser" class="form-control" th:form="${'formEditUser' + user.getId()}" th:value="*{password}"/>
+<!--                                                                                                    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>-->
                                                                                                     <br/>
                                                                                                     <label for="selectedRoleEditUser" class="form-label fw-bolder">Role</label>
                                                                                                     <select multiple id="selectedRoleEditUser" name="selectedRoleEditUser" class="form-select" size="2"
-                                                                                                            aria-label="size 2 select example">
+                                                                                                            aria-label="size 2 select example" th:form="${'formEditUser' + user.getId()}">
                                                                                                         <option th:each="role : ${roles}" th:value="${role}"
                                                                                                                 th:text="${role}">role
                                                                                                         </option>
@@ -178,7 +180,7 @@
                                                                                         class="btn btn-secondary"
                                                                                         data-bs-dismiss="modal">Close
                                                                                 </button>
-                                                                                <input type="submit" value="Edit" class="btn btn-primary"/>
+                                                                                <input type="submit" value="Edit" class="btn btn-primary" th:form="${'formEditUser' + user.getId()}"/>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -186,11 +188,11 @@
                                                             </div>
                                                         </td>
                                                         <td>
-<!--                                                            <form th:method="DELETE"-->
-<!--                                                                  th:action="@{/admin/{id}(id=${user.getId()})}">-->
-<!--                                                                <input type="submit" value="Delete"-->
-<!--                                                                       class="btn btn-danger"/>-->
-<!--                                                            </form>-->
+                                                            <form th:id="${'formDeleteUser' + user.getId()}" th:method="DELETE"
+                                                                  th:action="@{/admin/{id}(id=${user.getId()})}">
+                                                                <input type="submit" value="Delete"
+                                                                       class="btn btn-danger" th:form="${'formDeleteUser' + user.getId()}"/>
+                                                            </form>
                                                         </td>
                                                     </tr>
                                                     </tbody>
